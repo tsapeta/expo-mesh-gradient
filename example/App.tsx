@@ -16,6 +16,7 @@ export default function App() {
 
   const panGesture = Gesture
     .Pan()
+    .minDistance(1)
     .onUpdate(event => {
       point.value = {
         x: event.absoluteX / SCREEN_SIZE.width,
@@ -23,7 +24,10 @@ export default function App() {
       }
     })
     .onEnd(() => {
-      point.value = withSpring({ x: 0.5, y: 0.5 });
+      point.value = withSpring({ x: 0.5, y: 0.5 }, {
+        restDisplacementThreshold: 0.0001,
+        restSpeedThreshold: 0.02,
+      });
     });
 
   const animatedProps = useAnimatedProps(() => {
