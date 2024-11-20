@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "expo-mesh-gradient": ["../src/index"],
+      "expo-mesh-gradient/*": ["../src/*"]
+    }
+  }
+}
